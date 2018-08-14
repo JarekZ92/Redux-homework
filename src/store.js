@@ -1,8 +1,9 @@
 import { createStore, combaineReducers } from 'redux'
 
+import counterReducer from './state/counter'
 
 const reducer = combaineReducers({
-
+    counter: counterReducer
 })
 
 const store = createStore(
