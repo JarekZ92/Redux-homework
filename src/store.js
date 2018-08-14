@@ -1,8 +1,8 @@
-import { createStore, combaineReducers } from 'redux'
+import { createStore, combineReducers } from 'redux'
 
 import counterReducer from './state/counter'
 
-const reducer = combaineReducers({
+const reducer = combineReducers({
     counter: counterReducer
 })
 
