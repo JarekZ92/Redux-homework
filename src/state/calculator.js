@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
         case INPUT:
             return {
                 ...state,
-                input: action.number,
+                input: state.input * 10 + action.number,
                 isResultShown: false
             }
         default:
