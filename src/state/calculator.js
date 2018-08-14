@@ -2,7 +2,7 @@ const INPUT = 'calculator/INPUT'
 const ADD = 'calculator/ADD'
 const SUBSTRACT = 'calculator/SUBSTRACT'
 
-const inputAction = number => ({
+export const inputAction = number => ({
     type: INPUT,
     number
 })
