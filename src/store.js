@@ -1,4 +1,9 @@
-import { createStore } from 'redux'
+import { createStore, combaineReducers } from 'redux'
+
+
+const reducer = combaineReducers({
+
+})
 
 const store = createStore(
     reducer,
