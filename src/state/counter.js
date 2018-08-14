@@ -2,9 +2,21 @@
 
 const INC = 'counter/INC'
 const DEC = 'counter/DEC'
+const ADD = 'counter/ADD'
+const SUBSTRACT = 'counter/SUBSTRACT'
 
-const incAction = () => ({ type: INC }) //action creators
-const decAction = () => ({ type: DEC }) //action creators
+export const incAction = () => ({ type: INC }) //action creators
+export const decAction = () => ({ type: DEC }) //action creators
+
+export const addAction = number => ({
+    type: ADD,
+    number
+})
+
+export const substractAction = number => ({
+    type: SUBSTRACT,
+    number
+})
 
 const initialState = {
     number: 0
@@ -21,6 +33,16 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 number: state.number - 1
+            }
+        case ADD:
+            return {
+                ...state,
+                number: state.number + action.number
+            }
+        case SUBSTRACT:
+            return {
+                ...state,
+                number: state.number - action.number
             }
         default:
             return state
