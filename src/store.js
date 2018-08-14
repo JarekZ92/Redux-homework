@@ -1,10 +1,12 @@
 import { createStore, combineReducers } from 'redux'
 import add, { addAction1 } from './state/add'
 import counter, { incAction, decAction } from './state/counter'
+import calculator from './state/calculator'
 
 const reducer = combineReducers({
     counter,
-    add
+    add,
+    calculator
 })
 
 export const store = createStore(
