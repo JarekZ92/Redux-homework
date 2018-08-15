@@ -2,14 +2,31 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
+import { inputAction } from '../state/calculator';
+
+const styles = {
+    center: {
+        textAlign: 'center'
+    }
+}
 
 const Calculator = (props) => (
-    <div>
+    <div
+        style={styles.center}
+    >
+        <div>
+            <input
+                type="text"
+                style={{ textAlign: 'right' }}
+                disabled={true}
+                value={props._isResultShown ? props._result : props._input}
+            />
+        </div>
         <div>
             <button>+</button>
         </div>
         <div>
-            <button>1</button>
+            <button onClick={() => props._inputAction(1)}>1</button>
             <button>2</button>
             <button>3</button>
         </div>
@@ -26,12 +43,18 @@ const Calculator = (props) => (
         <div>
             <button>0</button>
         </div>
-    </div>
+    </div >
 )
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+    _input: state.calculator.input,
+    _result: state.calculator.result,
+    _isResultShown: state.calculator.isResultShown
+})
 
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({ //dispath powiadamia reducery że zaszła jakaś akcja
+    _inputAction: number => dispatch(inputAction(number))
+})
 
 export default connect(
     mapStateToProps,
