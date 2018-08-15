@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { inputAction } from '../state/calculator';
+import { addAction, inputAction, substractAction, resultAction, devideAction, multiplyAction } from '../state/calculator';
 
 const styles = {
     center: {
@@ -23,25 +23,29 @@ const Calculator = (props) => (
             />
         </div>
         <div>
-            <button>+</button>
+            <button onClick={props._addAction}>+</button>
+            <button onClick={props._substractAction}>-</button>
+            <button onClick={props._devideAction}>/</button>
+            <button onClick={props._multiplyAction}>*</button>
+            <button onClick={props._resultAction}>=</button>
         </div>
         <div>
             <button onClick={() => props._inputAction(1)}>1</button>
-            <button>2</button>
-            <button>3</button>
+            <button onClick={() => props._inputAction(2)}>2</button>
+            <button onClick={() => props._inputAction(3)}>3</button>
         </div>
         <div>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
+            <button onClick={() => props._inputAction(4)}>4</button>
+            <button onClick={() => props._inputAction(5)}>5</button>
+            <button onClick={() => props._inputAction(6)}>6</button>
         </div>
         <div>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
+            <button onClick={() => props._inputAction(7)}>7</button>
+            <button onClick={() => props._inputAction(8)}>8</button>
+            <button onClick={() => props._inputAction(9)}>9</button>
         </div>
         <div>
-            <button>0</button>
+            <button onClick={() => props._inputAction(0)}>0</button>
         </div>
     </div >
 )
@@ -49,11 +53,16 @@ const Calculator = (props) => (
 const mapStateToProps = state => ({
     _input: state.calculator.input,
     _result: state.calculator.result,
-    _isResultShown: state.calculator.isResultShown
+    _isResultShown: state.calculator.isResultShown,
 })
 
 const mapDispatchToProps = dispatch => ({ //dispath powiadamia reducery że zaszła jakaś akcja
-    _inputAction: number => dispatch(inputAction(number))
+    _inputAction: number => dispatch(inputAction(number)),
+    _addAction: () => dispatch(addAction()),
+    _substractAction: () => dispatch(substractAction()),
+    _resultAction: () => dispatch(resultAction()),
+    _devideAction: () => dispatch(devideAction()),
+    _multiplyAction: () => dispatch(multiplyAction())
 })
 
 export default connect(
